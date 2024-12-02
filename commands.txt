@@ -1,0 +1,3 @@
+phpunit --color --filter NomeDaClasseTest
+phpunit --filter Namespace\Do\Teste\FuncionarioTest
+C:\laragon\www\test>php ./vendor/bin/phpunit tests/Loja/RH/CalculadoraDeSalarioTest.php --colors

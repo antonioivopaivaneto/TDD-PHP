@@ -15,7 +15,7 @@ class CarrinhoDeCompras{
         
     }
 
-    public function adicinar(Produto $produto){
+    public function adicionar(Produto $produto){
         $this->produtos->append($produto);
         return $this;
     }
