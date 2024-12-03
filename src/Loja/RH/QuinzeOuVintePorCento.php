@@ -2,18 +2,19 @@
 
 namespace App\Loja\RH;
 
-class QuinzeOuVintePorCento implements IRegraDeCalculo
+class QuinzeOuVintePorCento extends RegraDeCalculo
 {
-    public function calcula(Funcionario $funcionario)
+    protected function porcentageBase()
     {
-        if($funcionario->getSalario() < 2500){
-            return $funcionario->getSalario() * 0.85;
-
-        }
-        return $funcionario->getSalario() * 0.75;
+        return 0.9;
     }
-}
-{
+    protected function PorcentagemAcimaDoLimite()
+    {
+        return 0.8;
+    }
+    protected function limite()
+    {
+        return 3000;
 
-
+    }
 }
