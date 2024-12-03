@@ -2,28 +2,30 @@
 
 namespace  App\Loja\FluxoDeCaixa;
 
+use App\Exemplos\RelogioDoSistema;
 use DateTime;
 
 class GeradorDeNotaFiscal
 {
-    private $dao;
-    private $sap;
+    private $acoes;
+    private $relogio;
 
 
-    public function __construct(NFDao $dao,Sap $sap){
-        $this->dao = $dao;
-        $this->sap = $sap;
+
+    public function __construct($acoes, RelogioDoSistema $relogio){
+        $this->acoes = $acoes;
+        $this->relogio = $relogio;
 
     }
     public function gera(Pedido $pedido){
 
-       $nf =  new NotaFiscal($pedido->getCliente(),$pedido->getValorTotal() * 0.94, new DateTime());
+       $nf =  new NotaFiscal($pedido->getCliente(),$pedido->getValorTotal() * 0.94, $this->relogio->hoje());
 
-       if($this->dao->persiste($nf) && $this->sap->envia($nf)){
-        return $nf;
-
+       
+       foreach($this->acoes as $acao){
+        $acao->executa($nf);
        }
-       return null;
+       return $nf;
     }
 
 }

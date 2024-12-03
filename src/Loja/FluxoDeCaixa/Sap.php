@@ -4,7 +4,7 @@ namespace  App\Loja\FluxoDeCaixa;
 
 class Sap
 {
-    public function envia(NotaFiscal $nf){
+    public function executa(NotaFiscal $nf){
 
         //envia nf para o sap
 
