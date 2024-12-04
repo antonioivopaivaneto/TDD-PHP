@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "c:\\laragon\\www\\test\\DB\\contato.sqlite3"
+  }
+]
